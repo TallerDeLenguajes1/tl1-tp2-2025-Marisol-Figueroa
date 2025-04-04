@@ -1,0 +1,7 @@
+*No. Porque tp2_1_2.c fue creado y commiteado en el 
+branch Opcion_2.
+
+*En Source Control, se puede ver el historial y qué cambios se hicieron en cada rama.
+
+*Después del merge, tp2_1_2.c aparece en la rama main.
+
