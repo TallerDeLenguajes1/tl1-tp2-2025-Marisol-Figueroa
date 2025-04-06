@@ -12,7 +12,7 @@ struct compu {
 };
 
 void listarPCs(struct compu pcs[], int cantidad);
-
+void mostrarMasVieja(struct compu pcs[], int cantidad);
 
 int main() {
     srand(time(NULL));
@@ -29,6 +29,9 @@ int main() {
     }
 
     listarPCs(pcs, CANT_PC);
+    printf("\n--- PC más vieja ---\n");
+    mostrarMasVieja(pcs, CANT_PC);
+
    
 
     return 0;
@@ -42,5 +45,19 @@ void listarPCs(struct compu pcs[], int cantidad) {
         printf("  Núcleos: %d\n", pcs[i].cantidad_nucleos);
         printf("  Tipo CPU: %s\n\n", pcs[i].tipo_cpu);
     }
+}
+
+void mostrarMasVieja(struct compu pcs[], int cantidad) {
+    int menor = 0;
+    for (int i = 1; i < cantidad; i++) {
+        if (pcs[i].anio < pcs[menor].anio) {
+            menor = i;
+        }
+    }
+
+    printf("Año: %d\n", pcs[menor].anio);
+    printf("Velocidad: %d GHz\n", pcs[menor].velocidad);
+    printf("Núcleos: %d\n", pcs[menor].cantidad_nucleos);
+    printf("Tipo CPU: %s\n", pcs[menor].tipo_cpu);
 }
 
