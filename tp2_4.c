@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <string.h>
 
 #define CANT_PC 5
 
@@ -13,6 +14,7 @@ struct compu {
 
 void listarPCs(struct compu pcs[], int cantidad);
 void mostrarMasVieja(struct compu pcs[], int cantidad);
+void mostrarMasVeloz(struct compu pcs[], int cantidad);
 
 int main() {
     srand(time(NULL));
@@ -29,11 +31,13 @@ int main() {
     }
 
     listarPCs(pcs, CANT_PC);
+
     printf("\n--- PC más vieja ---\n");
     mostrarMasVieja(pcs, CANT_PC);
 
-   
-
+    printf("\n--- PC más veloz ---\n");
+    mostrarMasVeloz(pcs, CANT_PC);
+    
     return 0;
 }
 
@@ -61,3 +65,17 @@ void mostrarMasVieja(struct compu pcs[], int cantidad) {
     printf("Tipo CPU: %s\n", pcs[menor].tipo_cpu);
 }
 
+
+void mostrarMasVeloz(struct compu pcs[], int cantidad) {
+    int mayor = 0;
+    for (int i = 1; i < cantidad; i++) {
+        if (pcs[i].velocidad > pcs[mayor].velocidad) {
+            mayor = i;
+        }
+    }
+
+    printf("Velocidad: %d GHz\n", pcs[mayor].velocidad);
+    printf("Año: %d\n", pcs[mayor].anio);
+    printf("Núcleos: %d\n", pcs[mayor].cantidad_nucleos);
+    printf("Tipo CPU: %s\n", pcs[mayor].tipo_cpu);
+}
